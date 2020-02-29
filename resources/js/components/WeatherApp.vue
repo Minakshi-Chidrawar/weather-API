@@ -1,7 +1,8 @@
 <template>
     <div class="text-white mb-8">
         <div class="places-input text-gray-800">
-            <input type="text" class="w-full">
+            <input type="search" id="city" class="form-control w-full" placeholder="In which city do you live?" />
+            <p>Selected: <strong id="address-value">none</strong></p>
         </div>
 
         <div class="weather-container font-sans w-128 max-w-lg overflow-hidden rounded-lg bg-gray-900 shadow-lg mt-4">
@@ -48,7 +49,45 @@
 <script>
     export default {
         mounted() {
-            this.fetchData()
+            this.fetchData();
+
+            var placesAutocomplete = places({
+                appId: 'plWOPD6TRYZA',
+                apiKey: '49159ff5ef4ffa47c17fb5a6a66e3ff0',
+                container: document.querySelector('#city'),
+                templates: {
+                    value: function(suggestion) {
+                        return suggestion.name;
+                    }
+                }
+            }).configure({
+                type: 'city',
+                aroundLatLngViaIP: false,
+            });
+
+            var $address = document.querySelector('#address-value')
+            placesAutocomplete.on('change', function(e) {
+                console.log(e.suggestion.name);
+                alert(e.suggestion.name);
+                $address.textContent = e.suggestion.value;
+
+                this.location.name = `${e.suggestion.name}, ${e.suggestion.country}`;
+                this.location.lat = e.suggestion.latlng.lat;
+                this.location.lng = e.suggestion.latlng.lng;
+            });
+
+            placesAutocomplete.on('clear', function() {
+                $address.textContent = 'none';
+            });
+        },
+
+        watch: {
+            location: {
+            handler(newValue, oldValue) {
+                this.fetchData()
+            },
+            deep: true
+            }
         },
 
         data() {
@@ -100,7 +139,7 @@
             },
 
             toDayOfWeek(timestamp) {
-                const newDate = new Date(timestamp * 1000);
+                var newDate = new Date(timestamp * 1000);
                 const days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
 
                 return days[newDate.getDay()]
