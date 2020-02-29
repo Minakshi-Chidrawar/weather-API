@@ -1955,9 +1955,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     this.fetchData();
+    var placesAutocomplete = places({
+      appId: 'plWOPD6TRYZA',
+      apiKey: '49159ff5ef4ffa47c17fb5a6a66e3ff0',
+      container: document.querySelector('#city'),
+      templates: {
+        value: function value(suggestion) {
+          return suggestion.name;
+        }
+      }
+    }).configure({
+      type: 'city',
+      aroundLatLngViaIP: false
+    });
+    var $address = document.querySelector('#address-value');
+    placesAutocomplete.on('change', function (e) {
+      console.log(e.suggestion.name);
+      alert(e.suggestion.name);
+      $address.textContent = e.suggestion.value; //this.location.name = e.suggestion.name + ',' + e.suggestion.country;
+
+      this.location.lat = e.suggestion.latlng.lat;
+      this.location.lng = e.suggestion.latlng.lng;
+    });
+    placesAutocomplete.on('clear', function () {
+      $address.textContent = 'none';
+    });
   },
   data: function data() {
     return {
@@ -37489,7 +37515,19 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "places-input text-gray-800" }, [
-      _c("input", { staticClass: "w-full", attrs: { type: "text" } })
+      _c("input", {
+        staticClass: "form-control w-full",
+        attrs: {
+          type: "search",
+          id: "city",
+          placeholder: "In which city do you live?"
+        }
+      }),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v("Selected: "),
+        _c("strong", { attrs: { id: "address-value" } }, [_vm._v("none")])
+      ])
     ])
   },
   function() {
