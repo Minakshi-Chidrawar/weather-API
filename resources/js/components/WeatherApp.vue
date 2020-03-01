@@ -66,9 +66,8 @@
             });
 
             var $address = document.querySelector('#address-value')
-            placesAutocomplete.on('change', function(e) {
+            placesAutocomplete.on('change', (e) => {
                 console.log(e.suggestion.name);
-                alert(e.suggestion.name);
                 $address.textContent = e.suggestion.value;
 
                 this.location.name = `${e.suggestion.name}, ${e.suggestion.country}`;
@@ -83,10 +82,10 @@
 
         watch: {
             location: {
-            handler(newValue, oldValue) {
-                this.fetchData()
-            },
-            deep: true
+                handler(newValue, oldValue) {
+                    this.fetchData()
+                },
+                deep: true
             }
         },
 
