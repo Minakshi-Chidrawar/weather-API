@@ -4,45 +4,21 @@
             <input type="search" id="city" class="form-control w-full" placeholder="In which city do you live?" />
             <p>Selected: <strong id="address-value">none</strong></p>
         </div>
+        <div class="weather-container font-sans w-50 max-w-lg overflow-hidden rounded-lg bg-gray-900 shadow-lg mt-4">
+            <div class="current-weather flex items-center justify-between pl-12">
+                <div class="flex-1 items-center my-6 ">
+                    <div class="semi-bold">{{ location.name }}</div>
+                    <div class="text-6xl font-semibold">{{ currentTemperature.actual }}°C</div>
+                    <div>Feels like {{ currentTemperature.feels }} °C</div>
+                    <div class="mb-8 semi-bold">{{ currentTemperature.summary }}</div>
 
-        <div class="weather-container font-sans w-128 max-w-lg overflow-hidden rounded-lg bg-gray-900 shadow-lg mt-4">
-            <div class="current-weather flex items-center justify-between px-6 py-8">
-                <div class="flex items-center">
-                    <div>
-                        <div class="text-6xl font-semibold">{{ currentTemperature.actual }}°C</div>
-                        <div>Feels like {{ currentTemperature.feels }} °C</div>
-                    </div>
-                    <div class="mx-5">
-                        <div class="semi-bold">{{ currentTemperature.summary }}</div>
-                        <div>{{ location.name }}</div>
-                    </div>
+                    <canvas id="iconCurrent" width="96" height="96" class="pt-4"></canvas>
                 </div>
-                <div>
-                    <canvas id="iconCurrent" width="96" height="96"></canvas>
-                </div>
-            </div> <!-- end of current weather -->
-            <div class="weekly-weather text-sm bg-gray-800 px-6 py-8 overflow-hidden">
-                <div v-for="(day, index) in daily" 
-                    :key="day.time" 
-                    class="flex items-center"
-                    :class="{ 'mt-8' : index > 0 }"
-                    v-if="index < 5"
-                >
-                    <div class="w-1/6 text-lg text-gray-200">{{ toDayOfWeek(day.time) }}</div>
-                    <div class="w-4/6 px-4 flex items-center">
-                        <div>
-                            <canvas :id="`icon${index+1}`" :data-icon="day.icon" width="24" height="24"></canvas>
-                        </div>
-                        <div class="ml-3">{{ day.summary }}</div>
-                    </div>
-                    <div class="w-1/6 text-right">
-                        <div>{{ Math.round(day.temperatureHigh) }}°C</div>
-                        <div>{{ Math.round(day.temperatureLow) }}°C</div>
-                    </div>
-                </div>
-
-            </div> <!-- end of weekly-weather -->
+            </div> <!-- end of current weather -->            
         </div> <!-- end of weather container -->
+        <div>
+            Hourly weather
+        </div>
     </div>
 </template>
 
