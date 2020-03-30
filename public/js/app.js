@@ -1932,6 +1932,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -37398,6 +37415,46 @@ var render = function() {
   return _c("div", { staticClass: "text-white mb-8" }, [
     _vm._m(0),
     _vm._v(" "),
+    _c("div", { staticClass: "lg:flex" }, [
+      _c("div", {
+        staticClass:
+          "h-48 lg:h-auto lg:w-1 flex-none bg-cover rounded-lg lg:rounded-lg lg:rounded-lg text-center overflow-hidden",
+        staticStyle: { "background-image": "url('/img/card-left.jpg')" },
+        attrs: { title: "Woman holding a mug" }
+      }),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "border-r border-b border-l border-gray-400 bg-gray-900 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-lg lg:rounded-lg lg:rounded-lg p-4 flex flex-col justify-between leading-normal"
+        },
+        [
+          _c("div", { staticClass: "items-center" }, [
+            _c("div", { staticClass: "text-2xl font-semibold" }, [
+              _vm._v(_vm._s(_vm.location.name))
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "text-6xl font-semibold" }, [
+              _vm._v(_vm._s(_vm.currentTemperature.actual) + "°C")
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _vm._v(
+                "Feels like " + _vm._s(_vm.currentTemperature.feels) + "°C"
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "semi-bold" }, [
+              _vm._v(_vm._s(_vm.currentTemperature.summary))
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(1)
+        ]
+      )
+    ]),
+    _vm._v(" "),
     _c(
       "div",
       {
@@ -37463,6 +37520,14 @@ var staticRenderFns = [
         _vm._v("Selected: "),
         _c("strong", { attrs: { id: "address-value" } }, [_vm._v("none")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mt-8" }, [
+      _c("canvas", { attrs: { id: "iconCurrent", width: "96", height: "96" } })
     ])
   }
 ]
