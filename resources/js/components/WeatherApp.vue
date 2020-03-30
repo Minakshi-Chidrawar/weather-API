@@ -4,6 +4,23 @@
             <input type="search" id="city" class="form-control w-full" placeholder="In which city do you live?" />
             <p>Selected: <strong id="address-value">none</strong></p>
         </div>
+
+        <div class="lg:flex">
+            <div class="h-48 lg:h-auto lg:w-1 flex-none bg-cover rounded-lg lg:rounded-lg lg:rounded-lg text-center overflow-hidden" style="background-image: url('/img/card-left.jpg')" title="Woman holding a mug">
+            </div>
+            <div class="border-r border-b border-l border-gray-400 bg-gray-900 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-lg lg:rounded-lg lg:rounded-lg p-4 flex flex-col justify-between leading-normal">
+                <div class="items-center">
+                    <div class="text-2xl font-semibold">{{ location.name }}</div>
+                    <div class="text-6xl font-semibold">{{ currentTemperature.actual }}°C</div>
+                    <div>Feels like {{ currentTemperature.feels }}°C</div>
+                
+                    <div class="semi-bold">{{ currentTemperature.summary }}</div>
+                </div>
+                <div class="mt-8">
+                    <canvas id="iconCurrent" width="96" height="96"></canvas>
+                </div>
+            </div>
+        </div>
         <div class="weather-container font-sans w-50 max-w-lg overflow-hidden rounded-lg bg-gray-900 shadow-lg mt-4">
             <div class="current-weather flex items-center justify-between pl-12">
                 <div class="flex-1 items-center my-6 ">
@@ -14,7 +31,7 @@
 
                     <canvas id="iconCurrent" width="96" height="96" class="pt-4"></canvas>
                 </div>
-            </div> <!-- end of current weather -->            
+            </div> <!-- end of current weather --> 
         </div> <!-- end of weather container -->
         <div>
             Hourly weather
