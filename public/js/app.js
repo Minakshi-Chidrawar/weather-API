@@ -1956,6 +1956,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -37419,8 +37421,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "text-white mb-8" }, [
+  return _c("div", { staticClass: "container mx-auto text-white mb-8" }, [
     _vm._m(0),
+    _vm._v(" "),
+    _c("div", [
+      _vm._v("Location: "),
+      _c("span", { staticClass: "text-2xl font-semibold" }, [
+        _vm._v(_vm._s(_vm.location.name))
+      ])
+    ]),
     _vm._v(" "),
     _c(
       "div",
@@ -37430,15 +37439,11 @@ var render = function() {
           "div",
           {
             staticClass:
-              "border-r border-b border-l border-gray-400 bg-gray-900 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-lg lg:rounded-lg lg:rounded-lg p-4 px-10 pb-10 flex flex-col justify-between leading-normal"
+              "border-r border-b border-l border-gray-400 bg-gray-900 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-lg lg:rounded-lg lg:rounded-lg p-4 px-8 pb-10 flex flex-col justify-between leading-normal"
           },
           [
             _c("div", { staticClass: "items-center" }, [
-              _c("div", { staticClass: "text-2xl font-semibold" }, [
-                _vm._v(_vm._s(_vm.location.name))
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "text-6xl font-semibold" }, [
+              _c("div", { staticClass: "font-semibold" }, [
                 _vm._v(_vm._s(_vm.currentTemperature.actual) + "°C")
               ]),
               _vm._v(" "),
@@ -37471,7 +37476,7 @@ var render = function() {
                     "div",
                     {
                       staticClass:
-                        "border-r border-b border-l border-gray-800 bg-gray-900 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-lg lg:rounded-lg lg:rounded-lg p-4 px-10 pb-10 flex flex-col justify-between leading-normal"
+                        "w-43 border-r border-b border-l border-gray-800 bg-gray-900 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-lg lg:rounded-lg lg:rounded-lg p-4 px-8 pb-10 flex flex-col justify-between leading-normal"
                     },
                     [
                       _c("div", { staticClass: "items-center" }, [
@@ -37479,21 +37484,23 @@ var render = function() {
                           _vm._v(_vm._s(_vm.toDayOfWeek(day.time)))
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "text-6xl font-semibold" }, [
-                          _vm._v(_vm._s(Math.round(day.temperatureHigh)) + "°C")
+                        _c("div", { staticClass: "font-semibold mt-6" }, [
+                          _vm._v(
+                            "Max: " +
+                              _vm._s(Math.round(day.temperatureHigh)) +
+                              "°C"
+                          )
                         ]),
                         _vm._v(" "),
-                        _c("div", [
+                        _c("div", { staticClass: "font-semibold mb-4" }, [
                           _vm._v(
-                            "Feels like " +
+                            "Min: " +
                               _vm._s(Math.round(day.temperatureLow)) +
                               "°C"
                           )
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "semi-bold" }, [
-                          _vm._v(_vm._s(day.summary))
-                        ])
+                        _c("div", {}, [_vm._v(_vm._s(day.summary))])
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "mt-8" }, [
@@ -37501,8 +37508,8 @@ var render = function() {
                           attrs: {
                             id: "icon" + (index + 1),
                             "data-icon": day.icon,
-                            width: "24",
-                            height: "24"
+                            width: "48",
+                            height: "48"
                           }
                         })
                       ])
@@ -37524,19 +37531,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "places-input text-gray-800" }, [
-      _c("input", {
-        staticClass: "form-control w-full",
-        attrs: {
-          type: "search",
-          id: "city",
-          placeholder: "In which city do you live?"
-        }
-      }),
-      _vm._v(" "),
-      _c("p", [
-        _vm._v("Selected: "),
-        _c("strong", { attrs: { id: "address-value" } }, [_vm._v("none")])
+    return _c("div", [
+      _c("div", { staticClass: "places-input text-gray-800" }, [
+        _c("input", {
+          staticClass: "form-control w-full",
+          attrs: {
+            type: "search",
+            id: "city",
+            placeholder: "In which city do you live?"
+          }
+        }),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v("Selected: "),
+          _c("strong", { attrs: { id: "address-value" } }, [_vm._v("none")])
+        ])
       ])
     ])
   },
@@ -37545,7 +37554,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "mt-8" }, [
-      _c("canvas", { attrs: { id: "iconCurrent", width: "96", height: "96" } })
+      _c("canvas", { attrs: { id: "iconCurrent", width: "54", height: "54" } })
     ])
   }
 ]
