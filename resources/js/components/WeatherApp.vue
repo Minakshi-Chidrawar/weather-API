@@ -1,21 +1,23 @@
 <template>
-    <div class="text-white mb-8">
-        <div class="places-input text-gray-800">
-            <input type="search" id="city" class="form-control w-full" placeholder="In which city do you live?" />
-            <p>Selected: <strong id="address-value">none</strong></p>
+    <div class="container mx-auto text-white mb-8">
+        <div>
+            <div class="places-input text-gray-800">
+                <input type="search" id="city" class="form-control w-full" placeholder="In which city do you live?" />
+                <p>Selected: <strong id="address-value">none</strong></p>
+            </div>
         </div>
 
+        <div>Location: <span class="text-2xl font-semibold">{{ location.name }}</span></div>
         <div class="lg:flex mt-10">
-            <div class="border-r border-b border-l border-gray-400 bg-gray-900 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-lg lg:rounded-lg lg:rounded-lg p-4 px-10 pb-10 flex flex-col justify-between leading-normal">
+            <div class="border-r border-b border-l border-gray-400 bg-gray-900 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-lg lg:rounded-lg lg:rounded-lg p-4 px-8 pb-10 flex flex-col justify-between leading-normal">
                 <div class="items-center">
-                    <div class="text-2xl font-semibold">{{ location.name }}</div>
-                    <div class="text-6xl font-semibold">{{ currentTemperature.actual }}°C</div>
+                    <div class="font-semibold">{{ currentTemperature.actual }}°C</div>
                     <div>Feels like {{ currentTemperature.feels }}°C</div>
                 
                     <div class="semi-bold">{{ currentTemperature.summary }}</div>
                 </div>
                 <div class="mt-8">
-                    <canvas id="iconCurrent" width="96" height="96"></canvas>
+                    <canvas id="iconCurrent" width="54" height="54"></canvas>
                 </div>
             </div> <!-- end of current weather -->
 
@@ -25,16 +27,16 @@
                     :class="{ 'mt-8' : index > 0 }"
                     v-if="index < 5"
             >
-                <div class="border-r border-b border-l border-gray-800 bg-gray-900 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-lg lg:rounded-lg lg:rounded-lg p-4 px-10 pb-10 flex flex-col justify-between leading-normal">
+                <div class="w-43 border-r border-b border-l border-gray-800 bg-gray-900 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-lg lg:rounded-lg lg:rounded-lg p-4 px-8 pb-10 flex flex-col justify-between leading-normal">
                     <div class="items-center">
                         <div class="text-2xl font-semibold">{{ toDayOfWeek(day.time) }}</div>
-                        <div class="text-6xl font-semibold">{{ Math.round(day.temperatureHigh) }}°C</div>
-                        <div>Feels like {{ Math.round(day.temperatureLow) }}°C</div>
+                        <div class="font-semibold mt-6">Max: {{ Math.round(day.temperatureHigh) }}°C</div>
+                        <div class="font-semibold mb-4">Min: {{ Math.round(day.temperatureLow) }}°C</div>
                     
-                        <div class="semi-bold">{{ day.summary }}</div>
+                        <div class="">{{ day.summary }}</div>
                     </div>
                     <div class="mt-8">
-                        <canvas :id="`icon${index+1}`" :data-icon="day.icon" width="24" height="24"></canvas>
+                        <canvas :id="`icon${index+1}`" :data-icon="day.icon" width="48" height="48"></canvas>
                     </div>
                 </div>
             </div> <!-- end of weekly-weather -->
