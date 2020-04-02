@@ -1936,6 +1936,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -37402,38 +37422,99 @@ var render = function() {
   return _c("div", { staticClass: "text-white mb-8" }, [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "lg:flex mt-10" }, [
-      _c(
-        "div",
-        {
-          staticClass:
-            "border-r border-b border-l border-gray-400 bg-gray-900 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-lg lg:rounded-lg lg:rounded-lg p-4 px-10 pb-10 flex flex-col justify-between leading-normal"
-        },
-        [
-          _c("div", { staticClass: "items-center" }, [
-            _c("div", { staticClass: "text-2xl font-semibold" }, [
-              _vm._v(_vm._s(_vm.location.name))
+    _c(
+      "div",
+      { staticClass: "lg:flex mt-10" },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "border-r border-b border-l border-gray-400 bg-gray-900 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-lg lg:rounded-lg lg:rounded-lg p-4 px-10 pb-10 flex flex-col justify-between leading-normal"
+          },
+          [
+            _c("div", { staticClass: "items-center" }, [
+              _c("div", { staticClass: "text-2xl font-semibold" }, [
+                _vm._v(_vm._s(_vm.location.name))
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-6xl font-semibold" }, [
+                _vm._v(_vm._s(_vm.currentTemperature.actual) + "°C")
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v(
+                  "Feels like " + _vm._s(_vm.currentTemperature.feels) + "°C"
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "semi-bold" }, [
+                _vm._v(_vm._s(_vm.currentTemperature.summary))
+              ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "text-6xl font-semibold" }, [
-              _vm._v(_vm._s(_vm.currentTemperature.actual) + "°C")
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _vm._v(
-                "Feels like " + _vm._s(_vm.currentTemperature.feels) + "°C"
+            _vm._m(1)
+          ]
+        ),
+        _vm._v(" "),
+        _vm._l(_vm.daily, function(day, index) {
+          return index < 5
+            ? _c(
+                "div",
+                {
+                  key: day.time,
+                  staticClass: "flex items-center",
+                  class: { "mt-8": index > 0 }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "border-r border-b border-l border-gray-800 bg-gray-900 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-lg lg:rounded-lg lg:rounded-lg p-4 px-10 pb-10 flex flex-col justify-between leading-normal"
+                    },
+                    [
+                      _c("div", { staticClass: "items-center" }, [
+                        _c("div", { staticClass: "text-2xl font-semibold" }, [
+                          _vm._v(_vm._s(_vm.toDayOfWeek(day.time)))
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "text-6xl font-semibold" }, [
+                          _vm._v(_vm._s(Math.round(day.temperatureHigh)) + "°C")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", [
+                          _vm._v(
+                            "Feels like " +
+                              _vm._s(Math.round(day.temperatureLow)) +
+                              "°C"
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "semi-bold" }, [
+                          _vm._v(_vm._s(day.summary))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mt-8" }, [
+                        _c("canvas", {
+                          attrs: {
+                            id: "icon" + (index + 1),
+                            "data-icon": day.icon,
+                            width: "24",
+                            height: "24"
+                          }
+                        })
+                      ])
+                    ]
+                  )
+                ]
               )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "semi-bold" }, [
-              _vm._v(_vm._s(_vm.currentTemperature.summary))
-            ])
-          ]),
-          _vm._v(" "),
-          _vm._m(1)
-        ]
-      )
-    ]),
+            : _vm._e()
+        })
+      ],
+      2
+    ),
     _vm._v(" "),
     _c("div", [_vm._v("\n        Hourly weather\n    ")])
   ])
