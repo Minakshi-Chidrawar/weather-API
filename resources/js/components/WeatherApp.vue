@@ -17,8 +17,28 @@
                 <div class="mt-8">
                     <canvas id="iconCurrent" width="96" height="96"></canvas>
                 </div>
-            </div>
-        </div>
+            </div> <!-- end of current weather -->
+
+            <div v-for="(day, index) in daily" 
+                    :key="day.time" 
+                    class="flex items-center"
+                    :class="{ 'mt-8' : index > 0 }"
+                    v-if="index < 5"
+            >
+                <div class="border-r border-b border-l border-gray-800 bg-gray-900 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-lg lg:rounded-lg lg:rounded-lg p-4 px-10 pb-10 flex flex-col justify-between leading-normal">
+                    <div class="items-center">
+                        <div class="text-2xl font-semibold">{{ toDayOfWeek(day.time) }}</div>
+                        <div class="text-6xl font-semibold">{{ Math.round(day.temperatureHigh) }}°C</div>
+                        <div>Feels like {{ Math.round(day.temperatureLow) }}°C</div>
+                    
+                        <div class="semi-bold">{{ day.summary }}</div>
+                    </div>
+                    <div class="mt-8">
+                        <canvas :id="`icon${index+1}`" :data-icon="day.icon" width="24" height="24"></canvas>
+                    </div>
+                </div>
+            </div> <!-- end of weekly-weather -->
+        </div> <!-- end of weather container -->
 
         <div>
             Hourly weather
