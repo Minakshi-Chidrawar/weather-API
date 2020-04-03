@@ -37424,9 +37424,9 @@ var render = function() {
   return _c("div", { staticClass: "container mx-auto text-white mb-8" }, [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", [
+    _c("p", { staticClass: "mt-4 text-indigo-900" }, [
       _vm._v("Location: "),
-      _c("span", { staticClass: "text-2xl font-semibold" }, [
+      _c("strong", { staticClass: "text-2xl font-semibold" }, [
         _vm._v(_vm._s(_vm.location.name))
       ])
     ]),
