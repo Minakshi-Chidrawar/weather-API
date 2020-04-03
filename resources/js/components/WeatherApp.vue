@@ -7,7 +7,7 @@
             </div>
         </div>
 
-        <div>Location: <span class="text-2xl font-semibold">{{ location.name }}</span></div>
+        <p class="mt-4 text-indigo-900">Location: <strong class="text-2xl font-semibold">{{ location.name }}</strong></p>
         <div class="lg:flex mt-10">
             <div class="border-r border-b border-l border-gray-400 bg-gray-900 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-lg lg:rounded-lg lg:rounded-lg p-4 px-8 pb-10 flex flex-col justify-between leading-normal">
                 <div class="items-center">
