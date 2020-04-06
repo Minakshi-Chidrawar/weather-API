@@ -1958,6 +1958,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var _this = this;
@@ -1998,6 +1999,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       currentTemperature: {
+        time: '',
         actual: '',
         feels: '',
         summary: '',
@@ -2022,6 +2024,7 @@ __webpack_require__.r(__webpack_exports__);
         return response.json();
       }).then(function (data) {
         console.log(data);
+        _this2.currentTemperature.time = data.currently.time;
         _this2.currentTemperature.actual = Math.round(data.currently.temperature);
         _this2.currentTemperature.feels = Math.round(data.currently.apparentTemperature);
         _this2.currentTemperature.summary = data.currently.summary;
@@ -2040,14 +2043,13 @@ __webpack_require__.r(__webpack_exports__);
           skycons.add('icon4', document.getElementById('icon4').getAttribute('data-icon'));
           skycons.add('icon5', document.getElementById('icon5').getAttribute('data-icon'));
           skycons.add('icon6', document.getElementById('icon6').getAttribute('data-icon'));
-          skycons.add('icon7', document.getElementById('icon7').getAttribute('data-icon'));
           skycons.play();
         });
       });
     },
     toDayOfWeek: function toDayOfWeek(timestamp) {
       var newDate = new Date(timestamp * 1000);
-      var days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+      var days = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
       return days[newDate.getDay()];
     }
   }
@@ -37447,6 +37449,10 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "items-center" }, [
+              _c("div", { staticClass: "text-2xl font-semibold" }, [
+                _vm._v(_vm._s(_vm.toDayOfWeek(_vm.currentTemperature.time)))
+              ]),
+              _vm._v(" "),
               _c("div", { staticClass: "font-semibold" }, [
                 _vm._v(_vm._s(_vm.currentTemperature.actual) + "°C")
               ]),
@@ -37458,7 +37464,10 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "semi-bold" }, [
-                _vm._v(_vm._s(_vm.currentTemperature.summary))
+                _vm._v(
+                  _vm._s(_vm.currentTemperature.summary) +
+                    " throughout the day."
+                )
               ])
             ]),
             _vm._v(" "),
@@ -37467,7 +37476,7 @@ var render = function() {
         ),
         _vm._v(" "),
         _vm._l(_vm.daily, function(day, index) {
-          return index < 7
+          return index < 6
             ? _c(
                 "div",
                 {
