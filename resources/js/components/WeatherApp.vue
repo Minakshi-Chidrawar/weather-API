@@ -11,10 +11,11 @@
         <div class="lg:flex mt-10">
             <div class="w-43 border-r border-b border-l border-gray-400 bg-gray-900 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-lg lg:rounded-lg lg:rounded-lg p-4 px-8 pb-10 flex flex-col justify-between leading-normal">
                 <div class="items-center">
+                    <div class="text-2xl font-semibold">{{ toDayOfWeek(currentTemperature.time) }}</div>
                     <div class="font-semibold">{{ currentTemperature.actual }}°C</div>
                     <div>Feels like {{ currentTemperature.feels }}°C</div>
                 
-                    <div class="semi-bold">{{ currentTemperature.summary }}</div>
+                    <div class="semi-bold">{{ currentTemperature.summary }} throughout the day.</div>
                 </div>
                 <div class="mt-8">
                     <canvas id="iconCurrent" width="54" height="54"></canvas>
@@ -25,7 +26,7 @@
                     :key="day.time" 
                     class="flex items-center"
                     :class="{ 'mt-8' : index > 0 }"
-                    v-if="index < 7"
+                    v-if="index < 6"
             >
                 <div class="w-43 border-r border-b border-l border-gray-800 bg-gray-900 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-lg lg:rounded-lg lg:rounded-lg p-4 px-8 pb-10 flex flex-col justify-between leading-normal">
                     <div class="items-center">
@@ -92,6 +93,7 @@
         data() {
             return {
                 currentTemperature: {
+                    time: '',
                     actual: '',
                     feels: '',
                     summary: '',
@@ -116,6 +118,7 @@
                     .then(response => response.json())
                     .then(data => {
                         console.log(data);
+                        this.currentTemperature.time = data.currently.time;
                         this.currentTemperature.actual = Math.round(data.currently.temperature);
                         this.currentTemperature.feels = Math.round(data.currently.apparentTemperature);
                         this.currentTemperature.summary = data.currently.summary;
@@ -136,7 +139,6 @@
                             skycons.add('icon4', document.getElementById('icon4').getAttribute('data-icon'));
                             skycons.add('icon5', document.getElementById('icon5').getAttribute('data-icon'));
                             skycons.add('icon6', document.getElementById('icon6').getAttribute('data-icon'));
-                            skycons.add('icon7', document.getElementById('icon7').getAttribute('data-icon'));
                             skycons.play();
                         })
                     })
@@ -144,7 +146,7 @@
 
             toDayOfWeek(timestamp) {
                 var newDate = new Date(timestamp * 1000);
-                const days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+                const days = ['MON','TUE','WED','THU','FRI','SAT','SUN'];
 
                 return days[newDate.getDay()];
             }
