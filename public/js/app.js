@@ -1978,7 +1978,6 @@ __webpack_require__.r(__webpack_exports__);
     });
     var $address = document.querySelector('#address-value');
     placesAutocomplete.on('change', function (e) {
-      console.log(e.suggestion.name);
       $address.textContent = e.suggestion.value;
       _this.location.name = "".concat(e.suggestion.name, ", ").concat(e.suggestion.country);
       _this.location.lat = e.suggestion.latlng.lat;
@@ -2028,6 +2027,9 @@ __webpack_require__.r(__webpack_exports__);
         _this2.currentTemperature.summary = data.currently.summary;
         _this2.currentTemperature.icon = data.currently.icon;
         _this2.daily = data.daily.data;
+        _this2.hourly = data.hourly.data; //console.log('daily data: ' + this.daily);
+        //console.log('Hourly data: ' + data.hourly.data);
+
         skycons.add("iconCurrent", _this2.currentTemperature.icon);
         skycons.play();
 
@@ -2037,6 +2039,8 @@ __webpack_require__.r(__webpack_exports__);
           skycons.add('icon3', document.getElementById('icon3').getAttribute('data-icon'));
           skycons.add('icon4', document.getElementById('icon4').getAttribute('data-icon'));
           skycons.add('icon5', document.getElementById('icon5').getAttribute('data-icon'));
+          skycons.add('icon6', document.getElementById('icon6').getAttribute('data-icon'));
+          skycons.add('icon7', document.getElementById('icon7').getAttribute('data-icon'));
           skycons.play();
         });
       });
@@ -37439,7 +37443,7 @@ var render = function() {
           "div",
           {
             staticClass:
-              "border-r border-b border-l border-gray-400 bg-gray-900 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-lg lg:rounded-lg lg:rounded-lg p-4 px-8 pb-10 flex flex-col justify-between leading-normal"
+              "w-43 border-r border-b border-l border-gray-400 bg-gray-900 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-lg lg:rounded-lg lg:rounded-lg p-4 px-8 pb-10 flex flex-col justify-between leading-normal"
           },
           [
             _c("div", { staticClass: "items-center" }, [
@@ -37463,7 +37467,7 @@ var render = function() {
         ),
         _vm._v(" "),
         _vm._l(_vm.daily, function(day, index) {
-          return index < 5
+          return index < 7
             ? _c(
                 "div",
                 {
