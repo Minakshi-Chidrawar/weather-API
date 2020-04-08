@@ -25,7 +25,7 @@
             <div v-for="(day, index) in daily" 
                     :key="day.time" 
                     class="flex items-center"
-                    :class="{ 'mt-8' : index > 0 }"
+                    :class="{ 'mt-8' : index > 1 }"
                     v-if="index < 6"
             >
                 <div class="w-43 border-r border-b border-l border-gray-800 bg-gray-900 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-lg lg:rounded-lg lg:rounded-lg p-4 px-8 pb-10 flex flex-col justify-between leading-normal">
@@ -148,7 +148,8 @@
                 var newDate = new Date(timestamp * 1000);
                 const days = ['MON','TUE','WED','THU','FRI','SAT','SUN'];
 
-                return days[newDate.getDay()];
+                //return days[newDate.getDay()];
+                return newDate.toLocaleDateString();
             }
         }
     }
