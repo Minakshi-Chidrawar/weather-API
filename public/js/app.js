@@ -2049,8 +2049,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     toDayOfWeek: function toDayOfWeek(timestamp) {
       var newDate = new Date(timestamp * 1000);
-      var days = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
-      return days[newDate.getDay()];
+      var days = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']; //return days[newDate.getDay()];
+
+      return newDate.toLocaleDateString();
     }
   }
 });
@@ -37482,7 +37483,7 @@ var render = function() {
                 {
                   key: day.time,
                   staticClass: "flex items-center",
-                  class: { "mt-8": index > 0 }
+                  class: { "mt-8": index > 1 }
                 },
                 [
                   _c(
